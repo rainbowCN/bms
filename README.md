@@ -12,7 +12,7 @@ develop process
 ###Done####
 1. Implemented base layout with stage.js
   + Datagrid Weight
-- + Image Editor
+  + Image Editor
   + Datepicker Editor
 
 2. A common data adapter based on php(slim);
