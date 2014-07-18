@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <!-- Theme detector see core/utils/theme-roller.js or core.js -->
+        <link rel="stylesheet" id="theme-roller">
+		<style>
+			.action-cell-item{
+				margin-right: 15px;
+			}
+
+            a {
+            	color: #000000
+            }
+            .branch .active {
+            	background-color: #007FFF;
+            }
+        	ul li {
+        		line-height: 30px;
+        		list-style: none;
+        	}
+        	li span {
+        		margin-left: 10px;
+        	} 
+		
+			.modal {
+			    display: block;
+			    position: relative;
+			    z-index: 1;
+			    overflow-y: hidden;
+			}   
+			.logout{
+				margin-right: 5px;
+			}     
+	
+		</style>
+
+ 		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+		
+    </head>
+    <body>
+
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <div id="main" region="app"></div>
+
+        <!--
+            Bonus:: special <script> attributes for build:
+                [exclude attr]="false": This is for the build tool to ignore the script while building config file controlled all-in-one js.
+            Note that this attr is often the same as your build config name used in the build command.
+        -->
+
+        <!--========Infrastructure Space: the engine======================================================-->
+        <!--Deps-->
+        <script type="text/javascript" src="js/lib/dependencies.js" framework-only="false" starter-kit="false" persist="true"></script>
+        <script type="text/javascript" src="js/extend/lib+-/noty/jquery.noty.packaged.js"></script>	
+		<script type="text/javascript" src="js/stage.js"></script>
+		<script type="text/javascript" src="js/extend/app/stage-extend.js"></script>			
+		<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>		
+
+        <!--APP-->
+        <!--APP Util-->
+        <!--APP Core-->
+        <!--Marionette.js Enhancement-/+-->      
+        <!--Predefined Goods(UI policy)-->
+        <!--Basic (provide in order):
+            [input] editors & form/fieldset;
+            optional:[display notification] event msg & user prompt;
+            md text chunk;
+        -->
+        <!--Advanced (provide in order):
+            [display data] table/list & paginator;
+            [query/control] filter/search & toolbar;
+            optional:[aggregation/transition/info-hiding(reduce distraction)] tree/accordion/slide/mini-maximum/tab
+        -->
+        <!--==============End of the engine===============================================================-->
+        <!--User/Programmer Space: the web application dev-->
+
+        <!--Project Spec Libs: e.g
+            <script type="text/javascript" src="bower_components/highcharts-release/highcharts.src.js"></script>
+            <script type="text/javascript" src="bower_components/highcharts-release/highcharts-more.src.js"></script>
+        -->
+        
+        <!--Widgets/Editors-->
+        <script type="text/javascript" src="js/extend/components/tree/menu.js"></script>        
+        <script type="text/javascript" src="js/extend/components/datagrid/cells/operate.js"></script>        
+        <script type="text/javascript" src="js/extend/components/datagrid/cells/string.js"></script>
+        <script type="text/javascript" src="js/extend/components/editor/image.js"></script>        
+        <script type="text/javascript" src="js/extend/components/editor/datepicker.js"></script>  
+        
+        <!-- Banner&Footer&&Filler -->
+        <script type="text/javascript" src="js/common/blank.js"></script>         
+        <script type="text/javascript" src="js/common/banner.js"></script>              
+ 		<script type="text/javascript" src="js/common/footer.js"></script>
+ 		         
+        <!--Contexts/Regionals-->    
+		<script type="text/javascript" src="js/context-index/user/form.js"></script>		
+		<script type="text/javascript" src="js/context-index/user/index.js"></script>
+		<script type="text/javascript" src="js/context-index/blog/form.js"></script>		
+		<script type="text/javascript" src="js/context-index/blog/index.js"></script>		
+        <script type="text/javascript" src="js/context-index/index.js"></script>  
+        
+		<script type="text/javascript" src="js/context-about/about.js"></script>		
+                         
+		<!-- login.js(context::page) -->       
+		 <script type="text/javascript" src="js/login/index.js"></script>     
+
+ 		<!-- index.js(init::app) -->
+ 		<script type="text/javascript" src="js/index.js"></script>
+ 		
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. 
+            <script>
+                var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+                (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+                g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+                s.parentNode.insertBefore(g,s)}(document,'script'));
+            </script>
+        -->
+    </body>
+</html>

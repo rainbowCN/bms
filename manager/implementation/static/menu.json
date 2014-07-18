@@ -1,0 +1,28 @@
+﻿[{"nodeName": "User",
+        "action": "#navigate/Index/User",
+        "nodes": [
+            {
+                "nodeName": "Admin",
+                "action": "#navigate/Index/User/Admin"
+            },
+            {
+                "nodeName": "Guest",
+                "action": "#navigate/Index/User/Guest"
+            }
+        ]
+    },
+    {
+        "nodeName": "Blog",
+        "action": "#navigate/Index/Blog",
+        "nodes": [
+            {
+                "nodeName": "Sina",
+                "action": "#navigate/Index/Blog/Sina"
+            },
+            {
+                "nodeName": "163",
+                "action": "#navigate/Index/Blog/163"
+            }
+        ]
+    }
+]
