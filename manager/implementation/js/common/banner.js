@@ -26,21 +26,32 @@
 		},
 		
 		onContextSwitched: function(contextName) {
-			console.log(contextName);
-			if (contextName === app.config.loginContext) {
-				this.ui.user.addClass('hidden').children('a').html('');
-				this.ui.logout.addClass('hidden');
-				this.ui.signUp.removeClass('hidden');
-			} else {
+			if(app.currentUser){
 				var strArray = [];
 				strArray.push('Welcome: <em>');
 				strArray.push(app.currentUser.name);
 				strArray.push('</em>');
-				this.ui.user.removeClass('hidden').children('a').html(strArray.join(''));
+				this.ui.user.children('a').html(strArray.join(''));
+			} else {
+				app.trigger('app:navigate', app.config.loginContext);
+			}
+			this.firePrivilegeUI(contextName);			
+		},
+		
+		firePrivilegeUI: function(contextName) {
+			if(contextName === app.config.loginContext) {
+				this.ui.index.addClass('hidden');
+				this.ui.about.addClass('hidden');
+				this.ui.user.addClass('hidden');
+				this.ui.logout.addClass('hidden');
+				this.ui.signUp.removeClass('hidden');
+			} else {
+				this.ui.index.removeClass('hidden');
+				this.ui.about.removeClass('hidden');	
 				this.ui.logout.removeClass('hidden');
 				this.ui.signUp.addClass('hidden');
 			}
-		}    
+		}
     });
     
    
@@ -51,8 +62,8 @@
 		    '</div>',
 		    '<div class="navbar-collapse collapse navbar-responsive-collapse">',
 		         '<ul class="nav navbar-nav">',
-		             '<li class="active"><a href="#navigate/Index">Index</a></li>',
-		             '<li><a href="#navigate/About">About</a></li>',
+		             '<li ui="index" class="active"><a href="#navigate/Index">Index</a></li>',
+		             '<li ui="about" ><a href="#navigate/About">About</a></li>',
 		         '</ul>',
 		         '<ul class="nav navbar-nav navbar-right">',
 		  	         '<li ui="user" class="hidden"><a></a></li>',
