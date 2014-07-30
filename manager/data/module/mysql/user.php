@@ -134,6 +134,52 @@ class User extends ModelMysqlImpl{
 		return $result;
 	}
 	
+	/**
+	 * 
+	 * @throws Exception
+	 * @return multitype:boolean
+	 */
+	public function checkToken($accessToken){
+		$result = false;
+		try {
+			$token = $this->getToken($accessToken);
+			if(cook($accessToken,$token->salt)===$token->token){
+				$result = true;
+			}
+		} catch(Exception $e){
+			throw $e;
+		}
+		return $result;
+	}	
+	
+	private function getToken($accessToken){
+		$result = array();
+		try {
+			$tokens = file_get_contents("./static/config_data/token.json");
+			if(preg_match('/^\xEF\xBB\xBF/',$result)){
+				$tokens=substr($tokens,3);
+			}
+			foreach(json_decode($tokens) as $token){
+				if($token->accessToken===$at){
+					$result = $token;
+					break;
+				}
+			}
+		} catch(Exception $e) {
+			throw $e;
+		}
+		echo $result;
+	}
+	
+	private function cook($accessToken, $salt) {
+		$result = false;
+		try {
+			$result = md5($accessToken.$salt);
+		} catch(Exception $e){
+			throw $e;
+		}
+		return $result;
+	}
 }
 
 ?>
