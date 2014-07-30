@@ -48,7 +48,7 @@
         	}),
         	onShow: function(){
         		var that = this;
-                app.remote("/menu").done(function(data){
+                app.remote("menu").done(function(data){
                     that.trigger('view:render-data', data);
                 });
         	}

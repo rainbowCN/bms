@@ -60,7 +60,7 @@
         	    className: 'pagination pagination-sm pull-right'
         	});     
         	datagrid.trigger('view:load-page', {
-        	    url: '/user',
+        	    url: 'user',
         	    page: 1,
         	    pageSize: 5
         	});        	

@@ -13,7 +13,7 @@
 			logout: function($triggerTag, event) {
 				event.preventDefault();
 				app.remote({
-					url: '/logout',
+					url: 'logout',
 					async: false,
 					dataType: 'json'
 				}).done(function(data, textStatus, jqXHR) {

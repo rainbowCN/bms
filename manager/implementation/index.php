@@ -20,9 +20,22 @@ function getMillisecond() {
 	return (float)sprintf('%.0f', (floatval($s1) + floatval($s2)) * 1000);
 }
 
-// [App/Get]
+
+$app->get('/touch', function() use ($app) {
+	$result = array("isLogin"=>false);
+	try {
+		if (isset($_SESSION["isLogin"])&&($_SESSION["isLogin"])) {
+			$result = array("isLogin"=>true, "user"=>$_SESSION["user"]);
+		}
+	} catch(Exception $e) {
+		$app->flash('error', $e->getMessage());
+	}
+	echo json_encode($result);
+});
+
+
 // domain/quit
-$app->get('/logout', function() use ($app) {
+$app->get('/api/logout', function() use ($app) {
 	$result = array("isLogin"=>true);
 	$reason = "";
 	try {
@@ -35,26 +48,10 @@ $app->get('/logout', function() use ($app) {
 	echo json_encode($result);
 });
 
-// [App/Get] 
-// domain/touch
-$app->get('/touch', function() use ($app) {
-	$result = array("isLogin"=>false);
-	try {
-		if (isset($_SESSION["isLogin"])&&($_SESSION["isLogin"])) {
-			$result = array("isLogin"=>true, "user"=>$_SESSION["user"]);
-		}
-	} catch(Exception $e) {
-		$app->flash('error', $e->getMessage());
-	}
-	echo json_encode($result);
-});
-	
-
-
-$app->get('/menu', function() use ($app) {
+$app->get('/api/menu', function() use ($app) {
 	try {
 		$result = array();
-		$result = file_get_contents("./static/menu.json");
+		$result = file_get_contents("./static/config_data/menu.json");
 		if(preg_match('/^\xEF\xBB\xBF/',$result)){
 			//$result=substr($result,3);
 		}
@@ -64,7 +61,7 @@ $app->get('/menu', function() use ($app) {
 	}
 });
 
-$app->post('/image', function() use ($app) {
+$app->post('/api/image', function() use ($app) {
 	$result = "";
 	$targetDir = "./upload/images/".getMillisecond();
 	try {
@@ -133,7 +130,7 @@ $app->put(
 );
 //[Normal] Get all [/user]
 $app->get(
-		'/:model/',
+		'/api/:model',
 		function ($model) use ($app) {
 			$patch = parse_url($model);
 			if(isset($patch['query'])) {

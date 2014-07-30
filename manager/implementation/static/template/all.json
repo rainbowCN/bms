@@ -1,0 +1,3 @@
+{
+  "cli/cli.html": "<div style=\"position:absolute;left:' + 0.02 * window.innerWidth + 'px;right:' + 0.02 * window.innerWidth + 'px;z-index:100;background-color:#FFFFFF;\">\r<ul class=\"nav nav-tabs\">\r<li class=\"active\"><a href=\"#terminal\" data-toggle=\"tab\">Command Line</a></li>\r<li><a href=\"#scripts\" data-toggle=\"tab\">Scripts</a></li>\r</ul>\r<div id=\"myTabContent\" class=\"tab-content\">\r<div class=\"terminal tab-pane fade active in\" id=\"terminal\">\r</div>\r<div class=\"scripts tab-pane fade\" id=\"scripts\">\r</div>\r</div>\r</div>"
+}

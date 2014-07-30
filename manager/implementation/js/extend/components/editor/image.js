@@ -115,7 +115,7 @@
 				this.onRender = function(){
 					var self = this;
 					this.$el.fileupload({
-						url: '/'+self.model.get('type'),
+						url: '/api/'+self.model.get('type'),
 						fileInput: null, //-remove the plugin's 'change' listener to delay the add event.
 						add: function (e, data) {
 							data.submit()

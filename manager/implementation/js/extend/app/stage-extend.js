@@ -16,13 +16,15 @@
 		 * @arguments Messages ,...,
 		 */
 		app.onError = function(msg){
+			
 			noty({
+				layout: 'center',
 				text: '<span class="label label-important">'+msg+'</span>',
 				type: 'error',
-				layout: 'center',
 				timeout: 2000,
 				dismissQueue: true
 			});
+			
 		};
 	}	
 	Handlebars.registerHelper('truncate2', function(string, num) {

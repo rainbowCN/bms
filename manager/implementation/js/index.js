@@ -14,11 +14,10 @@ Application.addInitializer(function(options) {
 });
 
 Application.onCheckUser = function() {
-	Application.remote({
-		url: '/touch',
-		async: false,
-		type: 'json'
-	}).done(function(data, textStatus, jqXHR) {
+	$.ajax({
+		url: 'touch',
+		dataType: 'json'
+		}).done(function(data, textStatus, jqXHR) {
 		if (!data.isLogin) {
 			Application.trigger('app:navigate', Application.config.loginContext);
 		} else {

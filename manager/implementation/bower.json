@@ -1,1 +1,21 @@
-{"name":"keep name here to use bower install, change if you prefer","private":true,"dependencies":{"stage":"^1.1.2","bootstrap":"~3.x.x","fontawesome":"~4.x.x","jquery-ui":"~1.x.x"},"optionalDependencies":{"spin.js":"*","nprogress":"*","colorbox":"*","flexslider":"*","jquery.terminal":"*","codemirror":"*","highlightjs":"*","socket.io-client":"*","jquery-serializeForm":"*","d3":"*","highcharts-release":"*","highstock-release":"*","jvectormap":"*","easeljs":"*","createjs-tweenjs":"*","jquery.transit":"*","scroll-reveal":"*","html5-boilerplate":"*","mockjs":"*","roughdraft.js":"*","jquery-mockjax":"*","crossfilter":"*"}}
+{
+  "name": "bms",
+  "version": "0.6.0",
+  "description": "The lightweight backstage management system",
+  "dependencies": {
+    "stage": "^1.5.1",
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.2",
+    "noty": "~2.2.5",
+    "jquery-ui": "1.10.4"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rainbowCN/bms.git"
+  },
+  "author": "James.Yu",
+  "license": "MIT"
+}

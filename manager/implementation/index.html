@@ -41,11 +41,8 @@
 			.logout{
 				margin-right: 5px;
 			}     
-	
 		</style>
-
- 		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-		
+		<link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
     </head>
     <body>
 
@@ -61,13 +58,20 @@
             Note that this attr is often the same as your build config name used in the build command.
         -->
 
+
         <!--========Infrastructure Space: the engine======================================================-->
-        <!--Deps-->
-        <script type="text/javascript" src="js/lib/dependencies.js" framework-only="false" starter-kit="false" persist="true"></script>
-        <script type="text/javascript" src="js/extend/lib+-/noty/jquery.noty.packaged.js"></script>	
-		<script type="text/javascript" src="js/stage.js"></script>
-		<script type="text/javascript" src="js/extend/app/stage-extend.js"></script>			
-		<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>		
+        <!--Deps-->	
+        <script type="text/javascript" src="bower_components/stage/dist/js/lib/dependencies.min.js"></script>
+        
+        <!--Deps+ -->
+   		<script type="text/javascript" src="bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"></script>   
+		<script type="text/javascript" src="bower_components/jquery-ui/ui/jquery.ui.datepicker.js"></script>
+		  
+		<!--stage.js & ext+ -->
+        <script type="text/javascript" src="bower_components/stage/dist/js/stage.js"></script>
+		<script type="text/javascript" src="js/extend/app/stage-extend.js"></script>
+		        
+
 
         <!--APP-->
         <!--APP Util-->
