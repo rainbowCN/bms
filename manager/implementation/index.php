@@ -95,13 +95,17 @@ $app->delete('/api/image/:id', function($id) use ($app) {
 $app->post(
 	'/api/:model',
 	function ($model) use ($app) {
-		$result = null;
-		$_REQUEST['model'] = $app->config('prefix').$model;
-		$body = $app->request->getBody();
-		$_REQUEST['data'] = json_decode($body, true);
-		$model = new $model();
-		$result = $model->create();
-		echo json_encode($result);
+		try {
+			$result = null;
+			$_REQUEST['model'] = $app->config('prefix').$model;
+			$body = $app->request->getBody();
+			$_REQUEST['data'] = json_decode($body, true);
+			$model = new $model();
+			$result = $model->create();
+		} catch(Exception $e) {
+			$result = $e->getMessage();
+		}	
+		echo json_encode(array("result"=>$result));
 	}
 );
 //[Normal] DELETE route

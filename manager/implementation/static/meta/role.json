@@ -1,0 +1,40 @@
+﻿[
+    {
+        "id":"1",
+        "type":"super",  
+        "privilege": [
+        	{
+        		"module":"user",
+        		"power":7            	
+        	},
+        	{
+        		"module":"blog",
+        		"power":7            	
+        	}        	
+        ]
+    },
+    {
+        "id":"2",
+        "type":"admin",  
+        "privilege": [
+        	{
+        		"module":"user",
+        		"power":1            	
+        	},
+        	{
+        		"module":"blog",
+        		"power":7            	
+        	}        	
+        ]
+    },
+    {
+        "id":"3",
+        "type":"guest",  
+        "privilege": [
+        	{
+        		"module":"blog",
+        		"power":1            	
+        	}        	
+        ]
+    }    
+]

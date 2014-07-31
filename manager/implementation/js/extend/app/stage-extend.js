@@ -16,7 +16,7 @@
 		 * @arguments Messages ,...,
 		 */
 		app.onError = function(msg){
-			
+			console.log(msg);
 			noty({
 				layout: 'center',
 				text: '<span class="label label-important">'+msg+'</span>',

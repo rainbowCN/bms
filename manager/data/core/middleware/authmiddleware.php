@@ -6,7 +6,7 @@
  * @author James.Yu
  * @created 2014-07-30
  */
-class ADCAuth extends \Slim\Middleware
+class AuthMiddleware extends \Slim\Middleware
 {
     /**
      * @var array
@@ -27,8 +27,8 @@ class ADCAuth extends \Slim\Middleware
 		try {
 			$app = $this->app;
 			$url = $app->request->getResourceUri();
-			$isAuth = $this->checkAccessToken($app);
-			if(preg_match('/\/touch)\b/', $url) || $isAuth || isset($_SESSION["user"])){
+			$isAuth = $this->checkToken($app);
+			if(preg_match('/\/(touch|unique|login)\b/', $url) || $isAuth || isset($_SESSION["user"])){
 				$this->next->call();
 			 }else {
 				$app->response->setStatus(403);
@@ -39,9 +39,13 @@ class ADCAuth extends \Slim\Middleware
     	}  		
     }
     
-    private function checkAccessToken($app){
-    	$accessToken =  $app->request->params('token');
-    	$user = new User();
-    	return $user->checkAccessToken($accessToken);
+    private function checkToken($app){
+    	$result = false;
+    	$token =  $app->request->params('token');
+    	if(isset($token)) {
+    		$user = new User();
+    		$result = $user->checkToken($token);   
+    	}
+    	return $result;
     }
 }

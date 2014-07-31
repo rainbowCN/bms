@@ -1,0 +1,10 @@
+﻿[
+    {
+        "model":"User",
+        "type":"Common"
+    },
+    {
+        "model":"Blog",
+        "type":"Common"
+    }
+]

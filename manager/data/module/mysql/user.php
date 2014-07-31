@@ -25,11 +25,13 @@ class User extends ModelMysqlImpl{
 					unset($_REQUEST['data'][$key]);
 					continue;
 				}
+				if($key=='name'){
+					$username = $_REQUEST['data']['name'];
+				}
 				$_p_sql = $_p_sql.",".$key;
 				$_v_sql = $_v_sql.",:".$key;
 			}
-			$_p_sql = $_p_sql.",password";
-			$_v_sql = $_v_sql.",123456";
+			$this->cook($_p_sql, $_v_sql);
 			$sql = "INSERT INTO ".$_REQUEST['model']."(".substr($_p_sql,1).") VALUES (".substr($_v_sql,1).");";
 			SQLHandler::executeSQL($this->conn, 'put', $sql, $_REQUEST['data']);
 			$result = $this->conn->lastInsertId();
@@ -37,6 +39,31 @@ class User extends ModelMysqlImpl{
 			throw $e;
 		}
 		return $result;
+	}
+	
+	private function cook(&$_p_sql, &$_v_sql) {
+		$username = "";
+		$password = "123456";
+		$salt = "bms";
+		foreach($_REQUEST['data'] as $key=>$value) {
+			if($key=='name'){
+				$username = $_REQUEST['data']['name'];
+				break;
+			}
+		}
+		$_p_sql = $_p_sql.",password";
+		$_v_sql = $_v_sql.",:password";
+		$_REQUEST['data']['password'] = md5($password.$salt);
+			
+		$accessToken = md5($password);
+		$_p_sql = $_p_sql.",accessToken";
+		$_v_sql = $_v_sql.",:accessToken";
+		$_REQUEST['data']['accessToken'] = $accessToken;
+				
+		$token = md5($accessToken.$salt);
+		$_p_sql = $_p_sql.",token";
+		$_v_sql = $_v_sql.",:token";
+		$_REQUEST['data']['token'] = $token;		
 	}
 	
 	public function update($id) {
@@ -105,6 +132,7 @@ class User extends ModelMysqlImpl{
 		$result = array("isLogin"=>false);
 		try {
 			$sql = "SELECT * FROM bms_user WHERE name=:name AND password=:password";
+			$args["password"] = md5($args["password"].md5($args["name"]));
 			$rows = SQLHandler::executeSQL($this->conn, 'post', $sql, $args);
 			if(count($rows)>0){
 				$_SESSION["isLogin"] = true;
@@ -133,53 +161,23 @@ class User extends ModelMysqlImpl{
 		}
 		return $result;
 	}
+
 	
-	/**
-	 * 
-	 * @throws Exception
-	 * @return multitype:boolean
-	 */
-	public function checkToken($accessToken){
+	public function checkToken($token){
 		$result = false;
 		try {
-			$token = $this->getToken($accessToken);
-			if(cook($accessToken,$token->salt)===$token->token){
+			$args = array("token"=>md5($token."bms"));
+			$sql = "SELECT id FROM bms_user WHERE token=:token";
+			$rows = SQLHandler::executeSQL($this->conn, 'post', $sql, $args);
+			if(count($rows)>0){
 				$result = true;
-			}
-		} catch(Exception $e){
-			throw $e;
-		}
-		return $result;
-	}	
-	
-	private function getToken($accessToken){
-		$result = array();
-		try {
-			$tokens = file_get_contents("./static/config_data/token.json");
-			if(preg_match('/^\xEF\xBB\xBF/',$result)){
-				$tokens=substr($tokens,3);
-			}
-			foreach(json_decode($tokens) as $token){
-				if($token->accessToken===$at){
-					$result = $token;
-					break;
-				}
 			}
 		} catch(Exception $e) {
 			throw $e;
 		}
-		echo $result;
-	}
-	
-	private function cook($accessToken, $salt) {
-		$result = false;
-		try {
-			$result = md5($accessToken.$salt);
-		} catch(Exception $e){
-			throw $e;
-		}
 		return $result;
 	}
+
 }
 
 ?>
