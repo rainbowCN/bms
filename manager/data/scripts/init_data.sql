@@ -58,6 +58,8 @@ CREATE TABLE `bms_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `token` varchar(255) DEFAULT NULL,
+  `salt` varchar(255) DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
   `birthday` varchar(255) DEFAULT NULL,
@@ -65,12 +67,13 @@ CREATE TABLE `bms_user` (
   `phone` varchar(255) DEFAULT NULL,
   `createDate` datetime DEFAULT NULL,
   `modifyDate` datetime DEFAULT NULL,
+  `accessToken` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 /*Data for the table `bms_user` */
 
-insert  into `bms_user`(`id`,`name`,`password`,`avatar`,`gender`,`birthday`,`email`,`phone`,`createDate`,`modifyDate`) values (7,'test7','123456','./upload/images/1403754670628763360136939499190.jpg','female','2014/06/11','test7@test.com',NULL,NULL,NULL);
+insert  into `bms_user`(`id`,`name`,`password`,`token`,`salt`,`avatar`,`gender`,`birthday`,`email`,`phone`,`createDate`,`modifyDate`,`accessToken`) values (1,'admin','f6fdffe48c908deb0f4c3bd36c032e72',NULL,NULL,NULL,'male','2014/07/29','admin@test.com',NULL,NULL,NULL,NULL),(27,'test1','488da249a5f8338d63949188853ca71a','a043151c851f2fa9f4d5c06e7b70abe4',NULL,'','male','2014/07/22','test1@test.com',NULL,NULL,NULL,'e10adc3949ba59abbe56e057f20f883e');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
