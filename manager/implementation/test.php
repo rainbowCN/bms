@@ -1,10 +1,11 @@
 <?php
 
 
-$username = "jamesyu";
+$username = "admin";
 $password = "123456";
 
-$salt = md5($username);
+$salt = md5($password.md5($username));
+echo $salt;
 $accessToken = md5($username.$password);
 $token = md5($accessToken.$salt);
 

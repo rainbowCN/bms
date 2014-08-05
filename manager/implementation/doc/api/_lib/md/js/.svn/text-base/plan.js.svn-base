@@ -1,0 +1,31 @@
+jQuery(document).ready(function() {
+
+	var mdMaker = marked;
+
+	jQuery.get('http://viewsoft.me/mk/data/plan.md', {}, function(data, textStatus, xhr) {
+		//optional stuff to do after success
+	  	var docHolder = $('.doc .content');
+	  	docHolder.html(mdMaker.parse(data));
+
+	  	//1. extract toc
+  	  	docHolder.find('ul:first').prependTo('.doc .list');
+	  	
+	  	//2. link generated toc
+	  	for (var i = 1; i <=6; i++) {
+	  		$('h'+i).each(function(index, el){
+	  			var target = $(el);
+	  			var anchor = $.trim(target.text().toLowerCase()).split(" ")[0];
+	  			console.log(anchor);
+	  			target.prepend('<a name="'+anchor+'"></a>');
+	  		})
+	  	};
+	  	
+	  	//3. adds prettyPrint ability
+		$('pre').addClass('prettyprint');
+		prettyPrint();
+
+
+	});
+	
+});
+
