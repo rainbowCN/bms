@@ -59,8 +59,8 @@
 	$user1 = array("id"=>1, "privilege"=>"", "roles"=>array("super"));
 	$user2 = array("id"=>2, "privilege"=>"", "roles"=>array("admin","register"));
 	
-	
-	// Step1, register
+	// Count personal privileges.
+	// Map roles with all privileges.
 	$_privileges = array();
 	foreach($user2["roles"] as $key=>$role){
 		$privileges = $g_roles[$role];
@@ -68,8 +68,9 @@
 			array_push($_privileges, $privilege);
 		}
 	}
-	
 	print_r($_privileges);
+	
+	// Reduce visual privileges.
 	$user2_privileges = array();
 	foreach($_privileges as $privilege){
 		if(isset($user2_privileges[$privilege["path"]])){
