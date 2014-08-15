@@ -1,4 +1,11 @@
 <?php
+/**
+ * The "role-list" & "privilege-list" are the properties of user to do auth-part-2. 
+ * When $g_privileges changed(+/-), the $g_roles needs to be counted. if not, "+" maybe do some reqs blocking, "-" maybe create useless router.   
+ * When $:role in $g_roles changed(+/-) , the privilege-list needs to be counted. effects as $g_privileges changing. 
+
+ */
+
 	/**
 	 * create:c || mask:4
 	 * update&delete:x || mask:2
