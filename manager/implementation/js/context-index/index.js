@@ -9,13 +9,12 @@
 	       		'</div>',
        		'</div>'
         ],
+        navRegion: 'content',
         initialize: function() {
         	console.log("initialize");
         },
         onNavigateTo: function(subpath) {
-        	if(subpath) {
-        		this.content.trigger('region:load-view', subpath+"Content");
-        	}
+        	console.log("subpath", subpath);
         },
         onSwitchContent: function(options){
     	},
@@ -33,7 +32,7 @@
                 model: TreeNode
             });
             this.sidebar.trigger('region:load-view', "Menu", {collection: new TreeNodeCollection(), dataURL: 'menu'});   
-            this.content.trigger('region:load-view', "UserContent");
+            this.content.trigger('region:load-view', "User");
     	}
     });
 })(Application);

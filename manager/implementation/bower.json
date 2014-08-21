@@ -3,7 +3,7 @@
   "version": "0.6.0",
   "description": "The lightweight backstage management system",
   "dependencies": {
-    "stage": "^1.5.1",
+    "stage": "^1.6.3",
     "grunt": "~0.4.1",
     "grunt-contrib-uglify": "~0.2.2",
     "noty": "~2.2.5",

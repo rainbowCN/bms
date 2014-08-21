@@ -1,7 +1,7 @@
 (function(app) {
 	
     app.context('Login', {
-        template: '#form-login-modal-tpl',
+        template: '@login/login.html',
         initialize: function(options){ 
         	this._validate = true;
         	this.listenTo(this, 'editor:focusout', this.validate);
@@ -76,29 +76,5 @@
             	}
             }
         }     
-    });
-
-	app.Util.Tpl.build('form-login-modal-tpl', [
-	      '<div class="modal">',
-	    		'<div class="modal-dialog">',
-	    	    	'<div class="modal-content">',
-	    	    		'<div class="modal-body">',
-			       			'<form class="form-horizontal">',
-			       				'<fieldset>',
-			       					'<legend>Sign in</legend>',
-			      					'<div editor="name"></div>',
-			      					'<div editor="password"></div>',   					
-			       					'<div class="form-group">',
-			       				      	'<div class="col-md-10 col-md-offset-3">',
-			       				      		'<button class="btn btn-primary" type="button" action="submit" style="margin:0px 20px">Submit</button>',
-			       				      		'<button class="btn btn-default" type="button" action="cancel">Cancel</button>',
-			       				      	'</div>',
-			       				    '</div>',						
-			       				'</fieldset>',
-			       			'</form>',			
-	    	    		'</div>',
-	    	    	'</div>',
-	    	    '</div>',
-	    	'</div>'	                                        
-	]);  	
+    });	
 })(Application);

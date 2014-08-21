@@ -1,5 +1,5 @@
 (function(app) {
-    app.regional('UserContent', {
+    app.regional('User', {
         className: 'panel panel-default',
         template: [
 			'<div class="panel-body">',

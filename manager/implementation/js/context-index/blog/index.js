@@ -1,5 +1,5 @@
 (function(app) {
-    app.regional('BlogContent', {
+    app.regional('Blog', {
         className: 'panel panel-default',
         template: [
 			'<div class="panel-body">',
@@ -11,6 +11,7 @@
        			'<div region="form" view="App::Blank"></div>',		
 		  	'</div>'                   
         ],
+        navRegion: 'datagrid',
         actions: { 
         	_bubble: true,
             'add': function($triggerTag, e){
@@ -60,7 +61,7 @@
         	    className: 'pagination pagination-sm pull-right'
         	});     
         	datagrid.trigger('view:load-page', {
-        	    url: '/blog', // {blog}
+        	    url: 'blog', // {blog}
         	    page: 1,
         	    pageSize: 5
         	});        	
